@@ -1,2 +1,5 @@
 # advent-of-code-2019
-coding https://adventofcode.com/ puzzles... :)
+https://adventofcode.com/ puzzles... :)
+
+-[x] day1
+-[ ] day1 bonus
