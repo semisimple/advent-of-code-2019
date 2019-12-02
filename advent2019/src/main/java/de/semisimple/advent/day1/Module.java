@@ -9,20 +9,19 @@ public class Module {
   }
 
   public static Module of(int mass) {
-     isValid(mass);
     return new Module(mass);
   }
 
-  /**
-   * Small masses were not explained and are therefore illegal for now ;)
-   *
-   * @param massToCheck
-   */
-  private static void isValid(int massToCheck) {
-    if(massToCheck<6) throw new IllegalArgumentException();
-  }
 
   public int calculateFuelRequirement() {
-    return (mass / 3) - 2;
+    if(mass>8){
+      int requiredFuel = (mass / 3) - 2;
+      return requiredFuel + requiredFuelForMassOfFuel(requiredFuel);
+    }
+    return 0;
+  }
+
+  private int requiredFuelForMassOfFuel(int requiredFuel) {
+    return Module.of(requiredFuel).calculateFuelRequirement();
   }
 }

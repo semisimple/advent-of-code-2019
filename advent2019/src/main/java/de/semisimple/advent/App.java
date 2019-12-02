@@ -16,7 +16,6 @@ public class App {
       long sum = lines.map(Integer::parseInt)
           .map(Module::of)
           .mapToInt(Module::calculateFuelRequirement)
-          .asLongStream()
           .sum();
 
       System.out.println("Required Fuel: " + sum);
@@ -24,4 +23,6 @@ public class App {
       System.err.println(e);
     }
   }
+
+
 }
