@@ -1,10 +1,9 @@
-package de.semisimple.advent;
+package de.semisimple.advent.day1;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-import de.semisimple.advent.day1.Module;
 
 public class App {
 
