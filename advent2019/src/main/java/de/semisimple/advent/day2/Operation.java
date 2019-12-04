@@ -31,15 +31,15 @@ class Operation {
     ADD(1, (a, b) -> a + b),
     MULTIPLY(2, (a, b) -> a * b),
     FINISH(99, (a, b) -> {
-      throw new UnsupportedOperationException("STOP");
+      throw new UnsupportedOperationException("99 has no calculation");
     });
 
     private int code;
-    private BinaryOperator<Integer> operation;
+    private BinaryOperator<Integer> calculation;
 
-    Opcode(int code, BinaryOperator<Integer> operation) {
+    Opcode(int code, BinaryOperator<Integer> calculation) {
       this.code = code;
-      this.operation = operation;
+      this.calculation = calculation;
 
     }
 
@@ -50,7 +50,7 @@ class Operation {
     }
 
     public Integer apply(int a, int b) {
-      return operation.apply(a, b);
+      return calculation.apply(a, b);
     }
 
   }
