@@ -3,4 +3,5 @@ https://adventofcode.com/ puzzles... :)
 
 * [x] day1
 * [x] day1 bonus
-* [ ] day2
+* [x] day2
+* [ ] day2 bonus
