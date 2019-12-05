@@ -1,7 +1,7 @@
 package de.semisimple.advent.day2;
 
 import java.util.Arrays;
-import java.util.function.BinaryOperator;
+import java.util.function.IntBinaryOperator;
 
 class Operation {
 
@@ -35,9 +35,9 @@ class Operation {
     });
 
     private int code;
-    private BinaryOperator<Integer> calculation;
+    private IntBinaryOperator calculation;
 
-    Opcode(int code, BinaryOperator<Integer> calculation) {
+    Opcode(int code, IntBinaryOperator calculation) {
       this.code = code;
       this.calculation = calculation;
 
@@ -49,8 +49,8 @@ class Operation {
           .findFirst().orElseThrow(IllegalArgumentException::new);
     }
 
-    public Integer apply(int a, int b) {
-      return calculation.apply(a, b);
+    public int apply(int a, int b) {
+      return calculation.applyAsInt(a, b);
     }
 
   }

@@ -18,12 +18,9 @@ public class App {
           .mapToInt(Integer::parseInt)
           .toArray();
 
-      programm[1] = 12;
-      programm[2] = 2;
+      IntCodeAnalyzer intCodeAnalyzer = IntCodeAnalyzer.of(intCodeComputer, programm);
+      intCodeAnalyzer.findNounVerbTupelFor(19690720);
 
-      final int[] result = intCodeComputer.run(programm);
-
-      System.out.println("Result (Index 0) " + result[0]);
     } catch (Exception e) {
       System.err.println(e);
     }
