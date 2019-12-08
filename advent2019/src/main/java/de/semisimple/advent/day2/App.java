@@ -11,12 +11,13 @@ public class App {
   public static void main(String[] args) {
     IntCodeComputer intCodeComputer = new IntCodeComputer();
 
-    Path path = Paths.get("advent2019/src/main/resources/day2/input");
+    Path path = Paths.get("advent2019/src/main/resources/day2/inputholz");
     try (final Stream<String> lines = Files.lines(path)) {
       final int[] programm = lines.map(it -> it.split(","))
           .flatMap(Arrays::stream)
           .mapToInt(Integer::parseInt)
           .toArray();
+      System.out.println(programm.length);
 
       IntCodeAnalyzer intCodeAnalyzer = IntCodeAnalyzer.of(intCodeComputer, programm);
       intCodeAnalyzer.findNounVerbTupelFor(19690720);
