@@ -8,4 +8,6 @@ https://adventofcode.com/ puzzles... :)
 * [x] day3
 * [x] day3 bonus
 * [x] day4
-* [ ] day4 bonus
+* [x] day4 bonus
+* [ ] day5
+* [ ] day5 bonus

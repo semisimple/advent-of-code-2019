@@ -17,6 +17,7 @@ public class PasswordCounter {
         .mapToObj(Password::of)
         .filter(Password::hasIdenticalDigitsNextToEachOther)
         .filter(Password::isSortedAscending)
+        .filter(Password::isNotInLargerGroup)
         .count();
 
   }

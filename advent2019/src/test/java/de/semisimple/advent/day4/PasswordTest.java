@@ -19,7 +19,7 @@ class PasswordTest {
   }
 
   @Test
-  void hasIdenticalDigitsNextToEachOther() {
+  void hasIdenticalDigitsNextToEachOther_exampleIputs() {
     assertAll("Valid passwords need to have two identical digits next to each other.",
         () -> assertTrue(Password.of(111111).hasIdenticalDigitsNextToEachOther()),
         () -> assertFalse(Password.of(123789).hasIdenticalDigitsNextToEachOther()),
@@ -28,11 +28,20 @@ class PasswordTest {
   }
 
   @Test
-  void isSortedAscending() {
+  void isSortedAscending_exampleInputs() {
     assertAll("Valid passwords need to be sorted ascending",
         () -> assertTrue(Password.of(111111).isSortedAscending()),
         () -> assertTrue(Password.of(123789).isSortedAscending()),
         () -> assertFalse(Password.of(223450).isSortedAscending())
+    );
+  }
+
+  @Test
+  void isNotInLargerGroup_examples() {
+    assertAll("Valid passwords are not part of a larger group.",
+        () -> assertFalse(Password.of(111111).isNotInLargerGroup()),
+        () -> assertFalse(Password.of(123444).isNotInLargerGroup()),
+        () -> assertTrue(Password.of(111122).isNotInLargerGroup())
     );
   }
 }

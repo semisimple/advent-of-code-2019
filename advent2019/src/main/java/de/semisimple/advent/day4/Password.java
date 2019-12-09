@@ -1,5 +1,7 @@
 package de.semisimple.advent.day4;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class Password {
@@ -27,12 +29,40 @@ public class Password {
   }
 
   public boolean hasIdenticalDigitsNextToEachOther() {
-    return IntStream.range(0, this.length - 1).anyMatch(i -> this.digits[i] == this.digits[i + 1]);
+    return IntStream.range(0, this.length - 1).anyMatch(i -> digitsNeighborsAreSame(i));
   }
 
   public boolean isSortedAscending() {
-    return !IntStream.range(0, this.length - 1).anyMatch(i -> this.digits[i] > this.digits[i + 1]);
+    return !IntStream.range(0, length - 1).anyMatch(i -> digits[i] > digits[i + 1]);
   }
 
 
+  public boolean isNotInLargerGroup() {
+    Map<Integer, Integer> counts = new HashMap<>();
+
+    IntStream.range(0, length)
+        .filter(this::hasIndenticalNeighbor)
+        .forEach(it -> updateMap(counts, digits[it]));
+
+    return counts.entrySet().stream().anyMatch(it -> 3 > it.getValue());
+  }
+
+  private boolean hasIndenticalNeighbor(int i) {
+    if (i == 0) {
+      return digitsNeighborsAreSame(i);
+    } else if (i < length - 1) {
+      return digitsNeighborsAreSame(i) || digitsNeighborsAreSame(i - 1);
+    } else {
+      return digitsNeighborsAreSame(i - 1);
+    }
+  }
+
+  private void updateMap(Map<Integer, Integer> counts, Integer key) {
+    final Integer oldValue = counts.get(key);
+    counts.put(key, oldValue != null ? oldValue + 1 : 1);
+  }
+
+  private boolean digitsNeighborsAreSame(int i) {
+    return this.digits[i] == this.digits[i + 1];
+  }
 }
